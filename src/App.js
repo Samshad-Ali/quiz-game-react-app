@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useContext } from 'react';
+import { context } from '.';
+import Quiz from './Components/Quiz';
+import StartPage from './Components/StartPage';
+import {Toaster} from 'react-hot-toast'
 function App() {
+  const {start} = useContext(context)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div className='w-full h-screen flex flex-col gap-4 justify-center items-center'>
+    <Toaster/>
+    {
+      start ? <Quiz/> : <StartPage/>
+    }
+   </div>
   );
 }
 
